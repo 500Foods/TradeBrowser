@@ -9,7 +9,7 @@ While this project is currently under active development, feel free to give it a
 [![Count Lines of Code](https://github.com/500Foods/Template/actions/workflows/main.yml/badge.svg)](https://github.com/500Foods/Template/actions/workflows/main.yml)
 <!--CLOC-START -->
 ```cloc
-Last updated at 2026-01-31 04:57:45 UTC
+Last updated at 2026-01-31 04:59:10 UTC
 --------------------------------------------------------------------------------
 Language                      files          blank        comment           code
 --------------------------------------------------------------------------------
@@ -17,7 +17,7 @@ CSV                               1              0              0         693418
 JavaScript                     2085          40840          27109         303873
 JSON                            218              1              0          32421
 TypeScript                      249           1400           9346          23464
-Markdown                        108           7235             45          15111
+Markdown                        108           7235             45          15154
 CSS                              18            309            354           8751
 Stylus                           11            220             16            733
 Text                              9            126              0            536
@@ -27,10 +27,10 @@ Bourne Again Shell                1              5              0             48
 YAML                              3              9             15             45
 Bourne Shell                      1              9             14             36
 --------------------------------------------------------------------------------
-SUM:                           2711          50193          36939        1078808
+SUM:                           2711          50193          36939        1078851
 --------------------------------------------------------------------------------
-154 Files were skipped (duplicate, binary, or without source code):
-  license: 61
+153 Files were skipped (duplicate, binary, or without source code):
+  license: 60
   js: 20
   ts: 14
   json: 10
