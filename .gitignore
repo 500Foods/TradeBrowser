@@ -72,3 +72,4 @@ modules/
 Win32/
 Win64/
 TMSWeb/
+src/node_modules/
