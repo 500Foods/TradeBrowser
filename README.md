@@ -15,7 +15,7 @@ While this project is currently under active development, feel free to give it a
 [![Count Lines of Code](https://github.com/500Foods/Template/actions/workflows/main.yml/badge.svg)](https://github.com/500Foods/Template/actions/workflows/main.yml)
 <!--CLOC-START -->
 ```cloc
-Last updated at 2026-01-31 05:08:13 UTC
+Last updated at 2026-01-31 05:13:35 UTC
 -------------------------------------------------------------------------------
 Language                     files          blank        comment           code
 -------------------------------------------------------------------------------
@@ -23,12 +23,12 @@ CSV                              1              0              0         693418
 JavaScript                      11            814            997           4177
 JSON                             5              1              0           1392
 CSS                              4            204             78           1238
-Markdown                         4            100              2            363
+Markdown                         4            102              2            329
 HTML                             1             39             40            288
 YAML                             2              8             13             37
 Bourne Shell                     1              9             14             36
 -------------------------------------------------------------------------------
-SUM:                            29           1175           1144         700949
+SUM:                            29           1177           1144         700915
 -------------------------------------------------------------------------------
 2 Files were skipped (duplicate, binary, or without source code):
   gitattributes: 1
