@@ -9,62 +9,24 @@ While this project is currently under active development, feel free to give it a
 [![Count Lines of Code](https://github.com/500Foods/Template/actions/workflows/main.yml/badge.svg)](https://github.com/500Foods/Template/actions/workflows/main.yml)
 <!--CLOC-START -->
 ```cloc
-Last updated at 2026-01-31 05:03:50 UTC
---------------------------------------------------------------------------------
-Language                      files          blank        comment           code
---------------------------------------------------------------------------------
-CSV                               1              0              0         693418
-JavaScript                     2085          40840          27109         303873
-JSON                            218              1              0          32421
-TypeScript                      249           1400           9346          23464
-Markdown                        109           7239             45          15171
-CSS                              18            309            354           8751
-Stylus                           11            220             16            733
-Text                              9            126              0            536
-HTML                              1             39             40            288
-XML                               6              0              0             84
-Bourne Again Shell                1              5              0             48
-YAML                              3              9             15             45
-Bourne Shell                      1              9             14             36
---------------------------------------------------------------------------------
-SUM:                           2712          50197          36939        1078868
---------------------------------------------------------------------------------
-153 Files were skipped (duplicate, binary, or without source code):
-  license: 60
-  js: 20
-  ts: 14
-  json: 10
-  mjs: 8
-  md: 4
-  tsbuildinfo: 4
-  txt: 4
-  cts: 3
-  cat-async: 1
-  cat-sync: 1
-  csv2json: 1
-  csv2tsv: 1
-  dsv2dsv: 1
-  dsv2json: 1
-  encode-object-async: 1
-  encode-object-sync: 1
-  encode-string-async: 1
-  encode-string-sync: 1
-  encoding-async: 1
-  encoding-sync: 1
-  eslintrc: 1
+Last updated at 2026-01-31 05:08:13 UTC
+-------------------------------------------------------------------------------
+Language                     files          blank        comment           code
+-------------------------------------------------------------------------------
+CSV                              1              0              0         693418
+JavaScript                      11            814            997           4177
+JSON                             5              1              0           1392
+CSS                              4            204             78           1238
+Markdown                         4            100              2            363
+HTML                             1             39             40            288
+YAML                             2              8             13             37
+Bourne Shell                     1              9             14             36
+-------------------------------------------------------------------------------
+SUM:                            29           1175           1144         700949
+-------------------------------------------------------------------------------
+2 Files were skipped (duplicate, binary, or without source code):
   gitattributes: 1
   gitignore: 1
-  json2csv: 1
-  json2dsv: 1
-  json2tsv: 1
-  npmignore: 1
-  tldts: 1
-  tsv2csv: 1
-  tsv2json: 1
-  wc-async: 1
-  wc-sync: 1
-  write-async: 1
-  write-sync: 1
 ```
 <!--CLOC-END-->
 
