@@ -1,0 +1,111 @@
+{
+  "title": "USDA ERS Vegetable Trade",
+  "description": "Interactive visualization of USDA ERS Vegetable Trade data",
+  "version": "1.0.0",
+  "dateRange": {
+    "start": "30_days_ago",
+    "end": "today",
+    "mode": "relative"
+  },
+  "chartSettings": {
+    "width": 1920,
+    "height": 1080,
+    "margin": {
+      "top": 50,
+      "right": 80,
+      "bottom": 50,
+      "left": 80
+    },
+    "animationDuration": 1000,
+    "transitionDuration": 300,
+    "showGrid": true,
+    "showLegend": true,
+    "showTooltip": true,
+    "responsive": true
+  },
+  "metrics": [
+    {
+      "path": "cloc.main.Core_C_Headers.code",
+      "label": "Core code",
+      "axis": "left",
+      "type": "line",
+      "color": "#000080",
+      "lineWidth": 2,
+      "lineStyle": "regular",
+      "pointRadius": 4,
+      "showPoints": true,
+      "interpolation": "monotone"
+    },
+    {
+      "path": "cloc.main.Test_C_Headers.code",
+      "label": "Test code",
+      "axis": "left",
+      "type": "line",
+      "color": "#800000",
+      "lineWidth": 2,
+      "lineStyle": "regular",
+      "pointRadius": 4,
+      "showPoints": true,
+      "interpolation": "monotone"
+    },
+    {
+      "path": "cloc.main.Markdown.code",
+      "label": "Markdown code",
+      "axis": "left",
+      "type": "line",
+      "color": "#87CEEB",
+      "lineWidth": 2,
+      "lineStyle": "regular",
+      "pointRadius": 4,
+      "showPoints": true,
+      "interpolation": "monotone"
+    },
+    {
+      "path": "cloc.main.Shell.code",
+      "label": "Shell code",
+      "axis": "left",
+      "type": "line",
+      "color": "#008000",
+      "lineWidth": 2,
+      "lineStyle": "thick",
+      "pointRadius": 4,
+      "showPoints": true,
+      "interpolation": "monotone"
+    }
+  ],
+  "uiSettings": {
+    "theme": "dark",
+    "fontFamily": "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
+    "fontSize": "14px",
+    "showControlPanel": true,
+    "defaultPanelPosition": "top-right",
+    "clickToEdit": true,
+    "doubleClickToZoom": true
+  },
+  "dataSources": {
+    "browser": {
+      "baseUrl": "https://raw.githubusercontent.com/500Foods/Philement/main/docs/H/metrics",
+      "fallbackDays": 30,
+      "cacheEnabled": true,
+      "cacheTTL": 3600
+    },
+    "local": {
+      "basePath": "/docs/H/metrics",
+      "fallbackDays": 30
+    }
+  },
+  "exportSettings": {
+    "svg": {
+      "filename": "hydrogen_metrics_chart",
+      "includeStyles": true,
+      "includeScripts": false,
+      "quality": "high",
+      "backgroundColor": "#000409"
+    },
+    "png": {
+      "filename": "hydrogen_metrics_chart",
+      "scale": 2,
+      "quality": 0.92
+    }
+  }
+}
