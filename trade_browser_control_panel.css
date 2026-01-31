@@ -1,0 +1,984 @@
+/*
+ * Hydrogen Build Metrics Browser - Control Panel CSS
+ * Control panel layout, buttons, and form controls
+ */
+
+/* Control Panel */
+.control-panel {
+  width: 420px;
+  height: 100%;
+  overflow-y: auto;
+  background: var(--panel-bg);
+  border-right: 1px solid var(--border-color);
+  padding: 15px;
+  z-index: 1000;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
+  transition: width var(--panel-transition-speed) ease, opacity var(--panel-transition-speed) ease, transform var(--panel-transition-speed) ease;
+  flex-shrink: 0;
+  /* Remove display: none to allow transitions */
+}
+
+.control-panel.collapsed {
+  width: 0;
+  padding: 0;
+  border-right: none;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateX(-100%);
+  transition: width var(--panel-transition-speed) ease, opacity var(--panel-transition-speed) ease, transform var(--panel-transition-speed) ease;
+  pointer-events: none;
+}
+
+.control-panel.hidden {
+  display: none;
+}
+
+.control-panel:not(.collapsed) {
+  opacity: 1;
+  transform: translateX(0);
+  transition: width var(--panel-transition-speed) ease, opacity var(--panel-transition-speed) ease, transform var(--panel-transition-speed) ease;
+}
+
+/* Ensure SVG fills the container properly */
+#metrics-chart {
+  width: 100%;
+  height: 100%;
+  display: block;
+  background-color: var(--chart-bg);
+  min-height: 500px;
+  transition: width var(--panel-transition-speed) ease;
+}
+
+/* Ensure chart axes are visible */
+.x-axis line, .y-axis line {
+  stroke: var(--border-color);
+  stroke-width: 1;
+}
+
+.x-axis path, .y-axis path {
+  display: none;
+}
+
+.x-axis text, .y-axis text {
+  fill: var(--text-secondary);
+  font-size: 0.8rem;
+  font-family: var(--font-family);
+}
+
+.x-axis .darken-dates {
+  opacity: 0.5;
+}
+
+/* Chart lines styling */
+.metric-line {
+  stroke-width: 2;
+  fill: none;
+  transition: stroke-width 0.2s ease;
+}
+
+.metric-line:hover {
+  stroke-width: 3;
+}
+
+/* Legend styling */
+.legend-title {
+  font-family: var(--font-family);
+  font-weight: 600;
+  fill: var(--text-color);
+}
+
+.legend-label {
+  font-family: var(--font-family);
+  fill: var(--text-color);
+}
+
+/* Panel Header */
+.panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.panel-header h3 {
+  font-size: 1.1rem;
+  color: var(--accent-color);
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.panel-header i {
+  cursor: pointer;
+  transition: transform var(--transition-speed) ease;
+}
+
+.panel-header i:hover {
+  transform: scale(1.1);
+}
+
+/* Close Button */
+.close-btn {
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+}
+
+.close-btn:hover {
+  color: var(--error-color);
+  transform: scale(1.1);
+}
+
+.close-btn:active {
+  transform: scale(0.95);
+}
+
+/* Make close button more prominent */
+#close-panel {
+  z-index: 1001;
+  position: relative;
+}
+
+#close-panel i {
+  display: block;
+  width: 20px;
+  height: 20px;
+  line-height: 20px;
+  text-align: center;
+}
+
+/* Report Title Section */
+.report-title-section {
+  margin-bottom: 15px;
+  padding: 12px;
+  background: var(--chart-bg);
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+}
+
+.title-input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.title-input-group label {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin-bottom: 5px;
+  font-weight: 500;
+}
+
+#report-title {
+  width: 100%;
+  padding: 10px 12px;
+  background: var(--panel-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  color: var(--text-color);
+  font-family: var(--font-family);
+  font-size: 1rem;
+  font-weight: 500;
+  outline: none;
+  transition: border-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+}
+
+#report-title:focus {
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.2);
+}
+
+#report-title::placeholder {
+  color: var(--text-secondary);
+  opacity: 0.8;
+}
+
+/* Date Range Controls */
+.date-range {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.date-input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  flex: 1;
+}
+
+.date-range label {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin-bottom: 5px;
+}
+
+.date-range input {
+  width: 100%;
+  padding: 8px 12px;
+  background: var(--panel-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  color: var(--text-color);
+  font-family: var(--font-family);
+  font-size: 0.9rem;
+  outline: none;
+  transition: border-color var(--transition-speed) ease;
+}
+
+.date-range input:focus {
+  border-color: var(--accent-color);
+}
+
+.date-range input::placeholder {
+  color: var(--text-secondary);
+  opacity: 0.8;
+}
+
+/* Chart Mode Toggle */
+.chart-mode-toggle {
+  margin: 15px 0 20px 0;
+  padding: 12px;
+  background: var(--chart-bg);
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+}
+
+.chart-mode-label {
+  display: block;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.toggle-container {
+  display: flex;
+  gap: 0;
+  background: var(--panel-bg);
+  border-radius: 6px;
+  padding: 3px;
+  border: 1px solid var(--border-color);
+}
+
+.chart-mode-btn {
+  flex: 1;
+  padding: 8px 12px;
+  background: transparent;
+  border: none;
+  border-radius: 4px;
+  color: var(--text-secondary);
+  font-family: var(--font-family);
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all var(--transition-speed) ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.chart-mode-btn:hover {
+  color: var(--text-color);
+}
+
+.chart-mode-btn.active {
+  background: var(--accent-color);
+  color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.chart-mode-btn i {
+  font-size: 0.9rem;
+}
+
+.chart-mode-description {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  margin-top: 8px;
+  font-style: italic;
+  text-align: center;
+}
+
+/* Metrics Selection Section */
+.metrics-selection {
+  margin: 20px 0;
+  padding: 15px;
+  background: var(--chart-bg);
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+}
+
+.metrics-selection .section-header {
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.metric-count, .selected-count {
+  color: var(--accent-color);
+  font-weight: normal;
+  font-size: 0.9rem;
+}
+
+/* Metric Dropdown */
+.metric-dropdown {
+  margin-bottom: 15px;
+}
+
+#metric-select {
+  width: 100%;
+  padding: 10px;
+  background: var(--panel-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  color: var(--text-color);
+  font-family: var(--font-family);
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: border-color var(--transition-speed) ease;
+}
+
+#metric-select:focus {
+  outline: none;
+  border-color: var(--accent-color);
+}
+
+#metric-select option {
+  background: var(--panel-bg);
+  color: var(--text-color);
+}
+
+/* Metric Configuration Options */
+.metric-configuration {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 15px;
+  align-items: flex-end;
+}
+
+/* Equal width for axis and type controls */
+.config-option {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  flex: 1;
+  min-width: 120px;
+}
+
+.config-option select {
+  padding: 8px;
+  background: var(--panel-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  color: var(--text-color);
+  font-family: var(--font-family);
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.config-option {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.config-option label {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.config-option select {
+  padding: 8px;
+  background: var(--panel-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  color: var(--text-color);
+  font-family: var(--font-family);
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.config-option input {
+  padding: 8px;
+  background: var(--panel-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  color: var(--text-color);
+  font-family: var(--font-family);
+  font-size: 0.85rem;
+}
+
+/* Color control with swatch on left, input on right */
+.color-control {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.color-control input {
+  max-width: 117px;
+  flex: 1;
+}
+
+.color-swatch {
+  width: 30px;
+  height: 30px;
+  border-radius: 4px;
+  border: 1px solid var(--border-color);
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.color-swatch:hover {
+  transform: scale(1.05);
+}
+
+#color-preview {
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+  margin: 5px 0;
+  border: 1px solid var(--border-color);
+}
+
+/* Add Metric Button */
+#add-selected-metric {
+  width: 100%;
+  margin-bottom: 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+#add-selected-metric:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Selected Metrics Section */
+.selected-metrics-section {
+  margin: 20px 0;
+}
+
+.selected-metrics-list {
+  max-height: 500px;
+  overflow-y: auto;
+  margin-top: 10px;
+}
+
+.selected-metric-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  margin-bottom: 8px;
+  background: var(--chart-bg);
+  border-radius: 6px;
+  border: 1px solid var(--border-color);
+  transition: all var(--transition-speed) ease;
+}
+
+.selected-metric-item:hover {
+  background: var(--hover-color);
+  border-color: var(--accent-color);
+}
+
+.selected-metric-item.dragging {
+  opacity: 0.5;
+  transform: rotate(5deg);
+}
+
+.selected-metric-item.drag-over {
+  border-top: 2px solid var(--accent-color);
+  background: var(--hover-color);
+}
+
+.metric-info-selected {
+  flex: 1;
+  overflow: hidden;
+}
+
+.metric-label-selected {
+  font-size: 0.9rem;
+  color: var(--text-color);
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+.metric-details-selected {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+
+.metric-axis-badge, .metric-type-badge {
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-size: 0.7rem;
+  font-weight: 600;
+}
+
+.metric-axis-badge.left {
+  background: rgba(74, 144, 226, 0.2);
+  color: #4a90e2;
+  border: 1px solid #4a90e2;
+}
+
+.metric-axis-badge.right {
+  background: rgba(126, 211, 33, 0.2);
+  color: #7ed321;
+  border: 1px solid #7ed321;
+}
+
+.metric-type-badge.line {
+  background: rgba(217, 112, 255, 0.2);
+  color: #d970ff;
+  border: 1px solid #d970ff;
+}
+
+.metric-type-badge.bar {
+  background: rgba(255, 150, 112, 0.2);
+  color: #ff9670;
+  border: 1px solid #ff9670;
+}
+
+.metric-style-badge {
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-size: 0.7rem;
+  font-weight: 600;
+}
+
+.metric-style-badge.thin {
+  background: rgba(150, 150, 150, 0.2);
+  color: #969696;
+  border: 1px solid #969696;
+}
+
+.metric-style-badge.regular {
+  background: rgba(100, 150, 255, 0.2);
+  color: #6496ff;
+  border: 1px solid #6496ff;
+}
+
+.metric-style-badge.thick {
+  background: rgba(255, 100, 100, 0.2);
+  color: #ff6464;
+  border: 1px solid #ff6464;
+}
+
+.metric-style-badge.dashed {
+  background: rgba(255, 200, 100, 0.2);
+  color: #ffc864;
+  border: 1px solid #ffc864;
+}
+
+.metric-style-badge.dotted {
+  background: rgba(100, 255, 150, 0.2);
+  color: #64ff96;
+  border: 1px solid #64ff96;
+}
+
+.metric-color-preview {
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+  border: 1px solid var(--border-color);
+}
+
+.reorder-handle-btn {
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  font-size: 1rem;
+  cursor: grab;
+  padding: 0 15px 0px 0px;
+  transition: transform var(--transition-speed) ease;
+  user-select: none;
+}
+
+.reorder-handle-btn:hover {
+  color: var(--accent-color);
+  transform: scale(1.1);
+}
+
+.reorder-handle-btn:active {
+  cursor: grabbing;
+}
+
+.remove-metric-btn {
+  background: none;
+  border: none;
+  color: var(--error-color);
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 0 5px;
+  transition: transform var(--transition-speed) ease;
+}
+
+.remove-metric-btn:hover {
+  transform: scale(1.2);
+  color: #ff6b6b;
+}
+
+/* Form Controls */
+.form-control {
+  width: 100%;
+  padding: 8px 12px;
+  background: var(--panel-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  color: var(--text-color);
+  font-family: var(--font-family);
+  font-size: 0.9rem;
+  outline: none;
+  transition: border-color var(--transition-speed) ease;
+}
+
+.form-control:focus {
+  border-color: var(--accent-color);
+}
+
+/* Button Controls */
+.controls {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.btn {
+  padding: 8px 12px;
+  background: var(--panel-bg);
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  font-family: var(--font-family);
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all var(--transition-speed) ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.btn:hover {
+  background: var(--hover-color);
+  border-color: var(--accent-color);
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+.btn.primary {
+  background: var(--accent-color);
+  border-color: var(--accent-color);
+  color: white;
+}
+
+.btn.primary:hover {
+  background: #3a7bcc;
+  border-color: #3a7bcc;
+}
+
+.btn.success {
+  background: var(--success-color);
+  border-color: var(--success-color);
+  color: white;
+}
+
+.btn.success:hover {
+  background: #3a8f3f;
+  border-color: #3a8f3f;
+}
+
+/* Data Loading Progress Bar - Now in control panel below export button */
+.data-loading-progress {
+  margin-top: 15px;
+  padding: 10px;
+  background: var(--chart-bg);
+  border-radius: 6px;
+  border: 1px solid var(--border-color);
+  display: none; /* Hidden by default */
+}
+
+.progress-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+  font-size: 0.85rem;
+  color: var(--text-color);
+}
+
+.progress-percentage {
+  font-weight: 600;
+  color: var(--accent-color);
+}
+
+.progress-bar-container {
+  width: 100%;
+  height: 12px;
+  background: var(--border-color);
+  border-radius: 6px;
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+
+.progress-bar {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--accent-color), var(--accent-secondary));
+  border-radius: 6px;
+  transition: width 0.3s ease;
+}
+
+.progress-details {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  text-align: center;
+}
+
+/* Metrics Filter Controls */
+.metrics-filter-controls {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+  align-items: center;
+}
+
+.filter-input {
+  flex: 1;
+  padding: 8px 12px;
+  background-color: var(--panel-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  color: var(--text-color);
+  font-size: 14px;
+  transition: all 0.2s ease;
+}
+
+.filter-input:focus {
+  outline: none;
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 2px rgba(0, 102, 204, 0.2);
+}
+
+#clear-filter, #apply-filter {
+  min-width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+#clear-filter {
+  background-color: var(--text-secondary);
+  color: white;
+}
+
+#apply-filter {
+  background-color: var(--accent-color);
+  color: white;
+}
+
+/* Filter Section Styles */
+.filter-section {
+  background: var(--chart-bg);
+  border-radius: 6px;
+  padding: 12px;
+  margin-bottom: 12px;
+  border: 1px solid var(--border-color);
+}
+
+/* Two-wide filter layout */
+.filter-row {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.filter-row:last-child {
+  margin-bottom: 0;
+}
+
+.filter-group {
+  flex: 1;
+  min-width: 0;
+  margin-bottom: 0;
+}
+
+.filter-group.full-width {
+  flex: 0 0 100%;
+}
+
+.filter-group:last-child {
+  margin-bottom: 0;
+}
+
+.filter-group label {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-bottom: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.filter-select {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  font-size: 0.85rem;
+  background: var(--panel-bg);
+  color: var(--text-color);
+  cursor: pointer;
+  transition: border-color 0.2s ease;
+}
+
+.filter-select:focus {
+  outline: none;
+  border-color: var(--accent-color);
+}
+
+/* Year Filter */
+.year-filter {
+  margin-top: 8px;
+}
+
+.year-checkboxes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  max-height: 100px;
+  overflow-y: auto;
+  padding: 6px;
+  background: var(--panel-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+}
+
+.year-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  padding: 3px 6px;
+  background: var(--chart-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 3px;
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.year-checkbox:hover {
+  border-color: var(--accent-color);
+}
+
+.year-checkbox input[type="checkbox"] {
+  margin: 0;
+  cursor: pointer;
+}
+
+.year-checkbox.checked {
+  background: var(--accent-color);
+  color: white;
+  border-color: var(--accent-color);
+}
+
+.year-controls {
+  display: flex;
+  gap: 12px;
+  margin-top: 6px;
+}
+
+.year-controls .btn-link {
+  padding: 0;
+  font-size: 0.7rem;
+  color: var(--accent-color);
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.year-controls .btn-link:hover {
+  color: var(--accent-secondary);
+}
+
+/* Filter Result */
+.filter-result {
+  padding: 8px 10px;
+  background: var(--info-bg, #e3f2fd);
+  border-left: 3px solid var(--info-color, #2196f3);
+  border-radius: 3px;
+  font-size: 0.8rem;
+  color: var(--text-color);
+  margin-top: 10px;
+}
+
+.filter-result #filter-result-count {
+  font-weight: 600;
+  color: var(--info-color, #2196f3);
+}
+
+.filter-result.match-exactly {
+  background: var(--success-bg, #e8f5e9);
+  border-left-color: var(--success-color, #4caf50);
+}
+
+.filter-result.match-exactly #filter-result-count {
+  color: var(--success-color, #4caf50);
+}
+
+/* Animation for panel toggle */
+.control-panel {
+  transition: width 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
+}
+
+.control-panel:hover {
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.4);
+}
+
+/* WORKING CSS - Allow proper animations */
+.control-panel {
+  width: 420px;
+  height: 100%;
+  overflow-y: auto;
+  background: var(--panel-bg);
+  border-right: 1px solid var(--border-color);
+  padding: 15px;
+  z-index: 1000;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
+  transition: width var(--panel-transition-speed) ease, opacity var(--panel-transition-speed) ease, transform var(--panel-transition-speed) ease;
+  flex-shrink: 0;
+}
+
+.control-panel.collapsed {
+  width: 0;
+  padding: 0;
+  border-right: none;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateX(-100%);
+  transition: width var(--panel-transition-speed) ease, opacity var(--panel-transition-speed) ease, transform var(--panel-transition-speed) ease;
+  pointer-events: none; /* Prevent clicks on collapsed panel */
+}
